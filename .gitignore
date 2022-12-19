@@ -1,0 +1,16 @@
+xbless/node_modules
+xbless/public/hot
+xbless/public/storage
+xbless/storage/*.key
+xbless/vendor
+xbless/.env
+xbless/.env.backup
+xbless/.phpunit.result.cache
+xbless/docker-compose.override.yml
+xbless/Homestead.json
+xbless/Homestead.yaml
+xbless/npm-debug.log
+xbless/yarn-error.log
+*.zip
+*.rar
+

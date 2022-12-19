@@ -1,0 +1,27 @@
+.fw-600 {
+    font-weight: 600;
+}
+
+.fs-20 {
+    font-size: 20px;
+}
+
+.fs-12 {
+    font-size: 12px;
+}
+
+.fs-16 {
+    font-size: 16px;
+}
+
+.bg-green {
+    background-color: #1AB394;
+}
+
+.bg-orange {
+    background-color: #F2994A;
+}
+
+.bg-blue {
+    background-color: #2F80ED;
+}
