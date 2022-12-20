@@ -33,7 +33,7 @@
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <p class="mb-1 text-body">Jumlah Puskesmas</p>
-                                        <h1 class="my-0 text-info">{{ $puskesmas }}</h1>
+                                        <h1 class="my-0 text-info">5</h1>
                                     </div>
                                     <div class="col-auto text-info">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
@@ -63,7 +63,7 @@
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <p class="mb-1 text-body">Jumlah Desa</p>
-                                        <h1 class="my-0 text-success">{{ $kecamatan }}</h1>
+                                        <h1 class="my-0 text-success">5</h1>
                                     </div>
                                     <div class="col-auto text-success">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
@@ -104,7 +104,7 @@
                                 <div class="row align-items-center">
                                     <div class="col">
                                         <p class="mb-1 text-body">Jumlah Sertifikat Kader</p>
-                                        <h1 class="my-0 text-danger">{{ number_format($certificate, 0, ',', '.') }}</h1>
+                                        <h1 class="my-0 text-danger">5</h1>
                                     </div>
                                     <div class="col-auto text-danger">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
@@ -133,47 +133,7 @@
                         </a>
                     </div>
                 </div>
-
                 <hr class="my-5">
-
-                <div class="row">
-                    <div class="col-3">
-                        <h3>Seluruh Kader</h3>
-                        <div class="card p-3 mt-4">
-                            <canvas id="chart-kader"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-5">
-                    <div class="col">
-                        <h3>Kader Per Kabupaten</h3>
-                        <div class="card p-3 mt-4">
-                            <canvas id="chart-kabupaten"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-5">
-                    <div class="col">
-                        <h3>Posyandu Per Kabupaten</h3>
-                        <div class="card p-3 mt-4">
-                            <div class="row justify-content-center mt-3">
-                                <div class="col-auto">
-                                    <div>
-                                        <span class="label-chart"></span>
-                                        <span>Purnama</span>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <div>
-                                        <span class="label-chart"></span>
-                                        <span>Mandiri</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <canvas id="chart-posyandu"></canvas>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -182,266 +142,6 @@
 
 @push('scripts')
     <script type="module">
-        $(document).ready(function(){
-            const charKabupaten = document.getElementById("chart-kabupaten").getContext("2d");
-            const charPosKabupaten = document.getElementById("chart-posyandu").getContext("2d");
-            const chartPie = document.getElementById("chart-kader").getContext("2d");
-
-            data_chart2(charKabupaten, charPosKabupaten, chartPie)
-            // data_chart1(charPosKabupaten)
-        })
-        const labelChart = document.querySelectorAll(".label-chart")
-
-        const bgColor =[
-            "rgb(255, 99, 132)",
-            "rgb(54, 162, 235)",
-        ]
-        labelChart[0].style.backgroundColor = bgColor[0]
-        labelChart[1].style.backgroundColor = bgColor[1]
-
-        const kaderLabel = ["Purnama", "Mandiri"]
-        const configPie = {
-            type: "pie",
-            data: {
-                labels: kaderLabel,
-                datasets: [{
-                        data: [],
-                        backgroundColor: bgColor,
-                        hoverOffset: 4,
-                    },
-                ],
-            }
-        }
         
-        const config = {
-            type: 'bar',
-            data: {
-                labels: [],
-                datasets: [
-                    {
-                        axis: 'y',
-                        label: '',
-                        data: [],
-                        backgroundColor: [
-                            '#EB5757',
-                            '#F2994A',
-                            '#F2C94C',
-                            '#219653',
-                            '#27AE60',
-                            '#6FCF97',
-                            '#2F80ED',
-                            '#56CCF2',
-                            '#9B51E0',
-                            '#6A6965',
-                        ],
-                        color: 'white',
-                        borderWidth: 1
-                    }
-                ]
-            },
-            options: {
-                backgroundColor: function(context) {
-                    return context.dataset.backgroundColor;
-                },
-                indexAxis: 'x',
-                responsive : true,
-                maintainAspectRatio : true,
-                aspectRatio : 3,
-                plugins: {
-                    legend: {
-                        display: false,
-                    },
-                    title: {
-                        display: true,
-                        text: ''
-                    },
-                    datalabels: {
-                        align: function(context) {
-                            var value = context.dataset.data[context.dataIndex];
-                            if (value == 0){
-                                return value > 0 ? 'start' : 'end';
-                            }else{
-                                return value > 0 ? 'end' : 'start';
-                            }
-                        },
-                        anchor: function(context) {
-                            var value = context.dataset.data[context.dataIndex];
-                            if (value == 0){
-                                return value > 0 ? 'start' : 'end';
-                            }else{
-                                return value > 0 ? 'end' : 'start';
-                            }
-                        },
-                        borderRadius: 4,
-                        backgroundColor: function(context) {
-                            return context.dataset.backgroundColor;
-                        },
-                        color: 'white',
-                        formatter: Math.round,
-                        padding: 2,
-                    }
-                },
-                layout: {
-                    padding: {
-                        top: 32,
-                        right: 16,
-                        bottom: 16,
-                        left: 8
-                    }
-                },
-                scales: {
-                    x: {
-                        grid : {
-                            display : false,
-                        },
-                        stacked: true,
-                    },
-                    y: {
-                        ticks : {
-                            color : '#000',
-                        },
-                        stacked: true,
-                    }
-                }
-            }
-        };
-
-        function data_chart2(charKabupaten, charPosKabupaten, chartPie){
-            Chart.register(ChartDataLabels);
-            var chart = new Chart(charKabupaten,config)
-            var chart2 = new Chart(charPosKabupaten, config1)
-            var pie     = new Chart(chartPie, configPie)
-            $.ajax({
-                headers: {'X-CSRF-TOKEN': $('[name="_token"]').val()},
-                url: "{{route('beranda.getdata')}}",
-                type: "POST",
-                success: function(response){
-                    console.log(response);
-                    if(response.data.success){
-                        chart.data.labels = response.data.kabupaten;
-                        chart.data.datasets[0].data = response.data.nilai;
-
-                        chart2.data.labels = response.data.kabupaten;
-                        chart2.data.datasets[0].data = response.data.purnama.nilai;
-                        chart2.data.datasets[1].data = response.data.mandiri.nilai;
-
-                        pie.data.datasets[0].data = response.data.pie;
-
-                        chart.update();
-                        chart2.update();
-                        pie.update();
-                    }
-                }
-            })
-        }
-
-        const config1 = {
-            type: 'bar',
-            data: {
-                labels: [],
-                datasets: [
-                    {
-                        axis: 'y',
-                        label: 'Purnama',
-                        data: [],
-                        backgroundColor: [
-                            bgColor[0]
-                        ],
-                        color: 'white',
-                        borderWidth: 1
-                    },
-                    {
-                        axis: 'y',
-                        label: 'Mandiri',
-                        data: [],
-                        backgroundColor: [
-                            bgColor[1]
-                        ],
-                        color: 'white',
-                        borderWidth: 1
-                    }
-                ]
-            },
-            options: {
-                indexAxis: 'x',
-                responsive : true,
-                maintainAspectRatio : true,
-                aspectRatio : 3,
-                plugins: {
-                    legend: {
-                        display: false,
-                    },
-                    title: {
-                        display: true,
-                        text: ''
-                    },
-                    datalabels: {
-                        align: function(context) {
-                            var value = context.dataset.data[context.dataIndex];
-                            if (value == 0){
-                                return value > 0 ? 'start' : 'end';
-                            }else{
-                                return value > 0 ? 'end' : 'start';
-                            }
-                        },
-                        anchor: function(context) {
-                            var value = context.dataset.data[context.dataIndex];
-                            if (value == 0){
-                                return value > 0 ? 'start' : 'end';
-                            }else{
-                                return value > 0 ? 'end' : 'start';
-                            }
-                        },
-                        color: 'white',
-                        // borderRadius: 4,
-                        backgroundColor: function(context) {
-                            return context.dataset.backgroundColor;
-                        },
-                        formatter: Math.round,
-                        padding: 2,
-                    }
-                },
-                layout: {
-                    padding: {
-                        top: 32,
-                        right: 16,
-                        bottom: 16,
-                        left: 8
-                    }
-                },
-                scales: {
-                    x: {
-                        grid : {
-                            display : false,
-                        },
-                        stacked: false,
-                    },
-                    y: {
-                        ticks : {
-                            color : '#000000',
-                        },
-                        stacked: false,
-                    }
-                }
-            }
-        };
-
-        // function data_chart1(charKabupaten){
-        //     Chart.register(ChartDataLabels);
-        //     var chart = new Chart(charKabupaten,config1)
-        //     $.ajax({
-        //         headers: {'X-CSRF-TOKEN': $('[name="_token"]').val()},
-        //         url: "{{route('beranda.getdataposkab')}}",
-        //         type: "POST",
-        //         success: function(response){
-        //             console.log(response);
-        //             chart.data.labels = response.data.field;
-        //             chart.data.datasets[0].data = response.data.purnama.nilai;
-        //             chart.data.datasets[1].data = response.data.mandiri.nilai;
-        //             chart.update();
-        //         }
-        //     })
-        // }
-
     </script>
 @endpush

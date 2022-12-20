@@ -45,13 +45,7 @@
     <main class="loginColumns animated fadeInDown">
         <div class="row content-log justify-content-between">
             <div class="col-md-6 text-center">
-                <div class="row justify-content-center">
-                    <div class="col-3">
-                        <img src="{{ asset('assets/img/logo_dinkes.png') }}" class="img-fluid" alt="dinkes_prov">
-                    </div>
-                </div>
                 <h2 class="welcome">{{__('menu_wording.title')}}</h2>
-                <h2>Dinas Kesehatan Provinsi Jawa Tengah</h2>
                 <img src="{{ asset('assets/background/esertif_v2.png') }}" class="img-fluid" alt="cover">
             </div>
             <div class="col-md-5 m-auto" style="padding:0px 5%; ">
@@ -63,17 +57,15 @@
                     {{ csrf_field() }}
                     <div class="row">
                         <div class="col">
-                            <label class="d-block">
-                                <p>Username</p>
-                                <select class="form-control" name="akun" id="select_user" required>
-                                </select>
-                            </label>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="@gmail.com" required="" name="email">
+                            </div>
                             <label class="d-block mt-4">
                                 <p>Password</p>
                                 <input type="password" 
                                     name="password"
                                     class="form-control" 
-                                    placeholder="Masukkan Username"
+                                    placeholder="Password"
                                     autocomplete="current-password"
                                     required>
                             </label>
@@ -86,30 +78,18 @@
                         </button>
                     </div>
                 </form>
-                    {{-- <div class="txt-login">Login</div> --}}
-                    {{-- <br/> --}}
-                    @if(session('message'))
-                    <div class="alert alert-{{session('message')['status']}}">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        {{ session('message')['desc'] }}
-                    </div>
-                    @endif
-                    {{-- <p>Cari Sertifikat Kader <a href="{{ route('search_sertifikat') }}" class="btn btn-primary"><i class="fa fa-search"></i> disini</a> </p> --}}
+                @if(session('message'))
+                <div class="alert alert-{{session('message')['status']}}">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ session('message')['desc'] }}
+                </div>
+                @endif
             </div>
         </div>
-        {{-- <hr/>
-        <div class="row">
-            <div class="col-md-6">
-
-            </div>
-            <div class="col-md-6 text-right">
-                <strong>Copyright <span style="color:#1ab394;">Rapier Teknologi Nasional © 2022</span></strong>
-            </div>
-        </div> --}}
     </main>
     <footer class="border-top pt-3 px-5">
         <p class="text-right">
-            <strong>Copyright <span style="color:#1ab394;">Rapier Teknologi Nasional © 2022</span></strong>
+            <strong>Copyright <span class="text-danger">Indihome - Alfin © 2022</span></strong>
         </p>
     </footer>
 
@@ -170,32 +150,6 @@
     <script src="{{ asset('assets/js/plugins/sweetalert/sweetalert.js')}}"></script>
     <script src="{{asset('assets/js/chart.min.js')}}"></script>
     <script>
-        $("#select_user").select2({
-            placeholder: "Pilih User .....",
-            allowClear: true,
-            ajax: {
-                url: "{{ route('filter_user') }}",
-                dataType: 'JSON',
-                data: function(params) {
-                    return {
-                        search: params.term,
-                        // kabupaten: $('#select_kab option:selected').val()
-                    }
-                },
-                processResults: function (data) {
-                    var results = [];
-                    $.each(data, function(index, item){
-                        results.push({
-                            id: item.name,
-                            text : item.name,
-                        });
-                    });
-                    return{
-                        results: results
-                    };
-                }
-            }
-        });
     </script>
 
 </body>

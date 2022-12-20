@@ -148,9 +148,6 @@ class PermissionController extends Controller
                     $return .= '<a href="#" class="nav-link">'."\n";
                     $return .= '<i class="nav-icon fas '.$row->icon.'"></i>'."\n";
                     $return .= '<p>'.$row->name.' <i class="right fas fa-angle-left"></i></p>'."\n";
-            //         $return .='<span class="pull-right-container">
-            //   <i class="fa fa-angle-left pull-right"></i>
-            // </span>'."\n";
                     $return .= '</a>'."\n";
                     if($hasChild) {
                        
@@ -186,9 +183,6 @@ class PermissionController extends Controller
                     }
                     $return .= '</li>'."\n";
                     $return .= '@endcan'."\n";
-                    // if(Route::has($row->slug)){
-                    //     $return .= '@endcan'."\n";
-                    // }
                 }
             }
         }

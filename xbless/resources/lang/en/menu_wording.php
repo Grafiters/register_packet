@@ -1,6 +1,4 @@
 <?php
-
 return [
-
-    'title'             => 'E-Sertifikat Online',
+    'title'             => 'Register Packet',
 ];

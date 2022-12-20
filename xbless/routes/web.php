@@ -34,8 +34,6 @@ Route::post('/manage/login', [LoginController::class, 'checkLogin'])->name('mana
 Route::get('/certifikat/{id}', [SertifikatController::class, 'getSertifikat'])->name('sertifikat');
 Route::group(['middleware' => ['auth', 'acl:web']], function () {
     Route::get('/', [BerandaController::class, 'index'])->name('manage.beranda');
-    Route::post('/getdata', [BerandaController::class, 'getDataKaderKabupaten'])->name('beranda.getdata');
-    Route::post('/getdataposyandu', [BerandaController::class, 'getDataPosyanduKabupaten'])->name('beranda.getdataposkab');
 
     Route::get('/manage/logout', [LoginController::class, 'logout'])->name('manage.logout');
 
