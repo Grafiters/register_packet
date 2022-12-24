@@ -28,7 +28,7 @@
 
                 <div class="row">
                     <div class="col">
-                        <a href="{{ route('master.puskesmas.index') }}">
+                        <a href="#">
                             <article class="card p-3">
                                 <div class="row align-items-center">
                                     <div class="col">
@@ -58,7 +58,7 @@
                         </a>
                     </div>
                     <div class="col">
-                        <a href="{{ route('master.desa.index') }}">
+                        <a href="#">
                             <article class="card p-3">
                                 <div class="row align-items-center">
                                     <div class="col">
@@ -99,7 +99,7 @@
                         </a>
                     </div>
                     <div class="col">
-                        <a href="{{ route('certificate.generate.index') }}">
+                        <a href="#">
                             <article class="card p-3">
                                 <div class="row align-items-center">
                                     <div class="col">

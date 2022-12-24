@@ -35,6 +35,17 @@
                     <li class="{{ Route::currentRouteName() === 'staff.index' ? 'active' : '' }}"><a
                             href="{{route('staff.index')}}">Master User</a></li>
                     @endcan
+                    <li class="{{ Route::currentRouteName() === 'staff.index' ? 'active' : '' }}"><a
+                        href="{{route('staff.index')}}">Master Kategori <span
+                        class="fa arrow"></span></a>
+                        
+                        <ul class="nav nav-second-level collapse">
+                            <li class="{{ Route::currentRouteName() === 'staff.index' ? 'active' : '' }}"><a
+                                href="{{route('staff.index')}}">Paket</a></li>
+                            <li class="{{ Route::currentRouteName() === 'staff.index' ? 'active' : '' }}"><a
+                                href="{{route('staff.index')}}">Speed</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
             @endcan

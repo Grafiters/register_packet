@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProvinsisTable extends Migration
+class CreateImageRegisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateProvinsisTable extends Migration
      */
     public function up()
     {
-        Schema::create('provinsi', function (Blueprint $table) {
+        Schema::create('image_regis', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
+            $table->unsignedBigInteger('register_paket_id');
+            $table->foreign('register_paket_id')->references('id')->on('register_pakets')->onDelete('cascade');
             $table->string('name');
+            $table->string('img');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateProvinsisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('provinsi');
+        Schema::dropIfExists('image_regis');
     }
 }

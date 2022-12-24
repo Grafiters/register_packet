@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKabupatensTable extends Migration
+class CreatePaketsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,10 @@ class CreateKabupatensTable extends Migration
      */
     public function up()
     {
-        Schema::create('kabupaten', function (Blueprint $table) {
+        Schema::create('pakets', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('provinsi_id');
-            $table->foreign('provinsi_id')
-                ->references('id')
-                ->on('provinsi')
-                ->onDelete('cascade');
-            $table->string('code');
-            $table->string('code_kabupaten');
             $table->string('name');
+            $table->text('detail');
             $table->timestamps();
         });
     }
@@ -34,6 +28,6 @@ class CreateKabupatensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kabupaten');
+        Schema::dropIfExists('pakets');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKepalaBidangsTable extends Migration
+class CreateContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateKepalaBidangsTable extends Migration
      */
     public function up()
     {
-        Schema::create('kepala_bidangs', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('register_paket_id');
+            $table->foreign('register_paket_id')->references('id')->on('register_pakets')->onDelete('cascade');
+            $table->string('contact');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateKepalaBidangsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kepala_bidangs');
+        Schema::dropIfExists('contacts');
     }
 }

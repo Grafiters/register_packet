@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateManualBooksTable extends Migration
+class CreateSpeedsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateManualBooksTable extends Migration
      */
     public function up()
     {
-        Schema::create('manual_book', function (Blueprint $table) {
+        Schema::create('speeds', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('upload_file');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateManualBooksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('manual_book');
+        Schema::dropIfExists('speeds');
     }
 }
