@@ -12,7 +12,7 @@
                         <li><a class="dropdown-item" href="{{route('profil.index')}}">Profil</a></li>
                         <li class="dropdown-divider"></li>
                         <li>
-                            <a class="dropdown-item" href="{{route('manage.logout')}}">
+                            <a class="dropdown-item" href="{{route('admin.logout')}}">
                                 Logout</a>
                         </li>
                     </ul>
@@ -35,15 +35,15 @@
                     <li class="{{ Route::currentRouteName() === 'staff.index' ? 'active' : '' }}"><a
                             href="{{route('staff.index')}}">Master User</a></li>
                     @endcan
-                    <li class="{{ Route::currentRouteName() === 'staff.index' ? 'active' : '' }}"><a
-                        href="{{route('staff.index')}}">Master Kategori <span
+                    <li><a
+                        href="#">Master Kategori <span
                         class="fa arrow"></span></a>
                         
                         <ul class="nav nav-second-level collapse">
-                            <li class="{{ Route::currentRouteName() === 'staff.index' ? 'active' : '' }}"><a
-                                href="{{route('staff.index')}}">Paket</a></li>
-                            <li class="{{ Route::currentRouteName() === 'staff.index' ? 'active' : '' }}"><a
-                                href="{{route('staff.index')}}">Speed</a></li>
+                            <li class="{{ Route::currentRouteName() === 'admin.master.kategori.paket.index' ? 'active' : '' }}"><a
+                                href="{{route('admin.master.kategori.paket.index')}}">Paket</a></li>
+                            <li class="{{ Route::currentRouteName() === 'admin.master.kategori.speed.index' ? 'active' : '' }}"><a
+                                href="{{route('admin.master.kategori.speed.index')}}">Speed</a></li>
                         </ul>
                     </li>
                 </ul>

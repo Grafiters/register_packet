@@ -11,7 +11,7 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <a href="{{route('manage.logout')}}" class="text-white">
+                <a href="{{route('admin.logout')}}" class="text-white">
                     <span class="mr-2">Log out</span>
                     <i class="fas fa-sign-out-alt"></i>
                 </a>
