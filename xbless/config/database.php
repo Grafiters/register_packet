@@ -56,7 +56,7 @@ return [
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
-            'strict' => true,
+            'strict' => false,
             'modes' => [
                 //'ONLY_FULL_GROUP_BY', // Disable this to allow grouping by one column
                 'STRICT_TRANS_TABLES',

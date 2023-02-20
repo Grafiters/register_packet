@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Speed extends Model
 {
     use HasFactory;
+
+    public function listSpeed(){
+        return Speed::all();
+    }
 }

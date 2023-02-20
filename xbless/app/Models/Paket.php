@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Paket extends Model
 {
     use HasFactory;
+
+    public function listPaket(){
+        return Paket::all();
+    }
 }

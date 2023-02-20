@@ -33,6 +33,7 @@
 
     <!-- Sweet Alert -->
     <link href="{{ asset('assets/css/plugins/sweetalert/sweetalert.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet">
 
     <link href="{{ asset('assets/css/plugins/daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet">
 
@@ -158,6 +159,8 @@
     <script src="{{ asset('assets/js/plugins/sweetalert/sweetalert.js')}}"></script>
     <script src="{{asset('assets/js/chart.min.js')}}"></script>
 
+    <!-- SUMMERNOTE -->
+    <script src="{{ asset('assets/js/plugins/summernote/summernote-bs4.js') }}"></script>
 
     <script type="text/javascript"
         src="https://cdn.datatables.net/fixedcolumns/4.0.2/js/dataTables.fixedColumns.min.js"></script>

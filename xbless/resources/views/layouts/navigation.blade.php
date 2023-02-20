@@ -21,9 +21,9 @@
                     PTM
                 </div>
             </li>
-            <li class="{{ (request()->is('/')) ? 'active' : '' }}">
+            {{-- <li class="{{ (request()->is('/')) ? 'active' : '' }}">
                 <a href="{{ url('/') }}"><i class="fa fa-home"></i> <span class="nav-label">Dashboard</span></a>
-            </li>
+            </li> --}}
 
             @can('master.index')
             <li
@@ -41,14 +41,18 @@
                         
                         <ul class="nav nav-second-level collapse">
                             <li class="{{ Route::currentRouteName() === 'admin.master.kategori.paket.index' ? 'active' : '' }}"><a
-                                href="{{route('admin.master.kategori.paket.index')}}">Paket</a></li>
+                                href="{{route('admin.master.kategori.paket.index')}}">Jenis Paket</a></li>
                             <li class="{{ Route::currentRouteName() === 'admin.master.kategori.speed.index' ? 'active' : '' }}"><a
                                 href="{{route('admin.master.kategori.speed.index')}}">Speed</a></li>
                         </ul>
                     </li>
+                    <li class="{{ Route::currentRouteName() === 'admin.master.paket.detail.index' ? 'active' : '' }}"><a
+                        href="{{route('admin.master.paket.detail.index')}}">Master Paket</a></li>
                 </ul>
             </li>
             @endcan
+            <li class="{{ Route::currentRouteName() === 'admin.register.index' || Route::currentRouteName() === 'admin.register.detail' ? 'active' : '' }}"><a
+                href="{{route('admin.register.index')}}"><i class="fa fa-user"></i> Register User</a></li>
             @can('security.index')
             <li
                 class="{{Route::currentRouteName() === 'permission.index' || Route::currentRouteName() === 'role.index' ? 'active' : '' }}">

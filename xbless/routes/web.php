@@ -9,6 +9,8 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SpeedController;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\DetailPaketController;
+use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,11 @@ use App\Http\Controllers\DetailPaketController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', [LandingPageController::class, 'index'])->name('index');
+Route::get('/paket', [LandingPageController::class, 'detailPaket'])->name('paket');
+Route::get('/confirm/{code?}', [LandingPageController::class, 'confirm'])->name('confirm');
+Route::post('/regis_paket', [LandingPageController::class, 'regis'])->name('regis_paket');
 
 Route::get('/admin/login', [LoginController::class, 'index'])->name('manage.login');
 Route::post('/admin/login', [LoginController::class, 'checkLogin'])->name('manage.checklogin');
@@ -87,8 +94,8 @@ Route::group(['middleware' => ['auth', 'acl:web']], function () {
                 });
             });
 
-            Route::group(['prefix' => 'detail', 'as' => 'detail.'], function () {
-                Route::group(['prefix' => 'paket', 'as' => 'paket.'], function () {
+            Route::group(['prefix' => 'paket', 'as' => 'paket.'], function () {
+                Route::group(['prefix' => 'detail', 'as' => 'detail.'], function () {
                     Route::get('/', [DetailPaketController::class, 'index'])->name('index');
                     Route::get('/tambah', [DetailPaketController::class, 'tambah'])->name('tambah');
                     Route::get('/ubah/{id?}', [DetailPaketController::class, 'edit'])->name('ubah');
@@ -97,6 +104,17 @@ Route::group(['middleware' => ['auth', 'acl:web']], function () {
                     Route::delete('/delete/{id?}', [DetailPaketController::class, 'delete'])->name('hapus');
                 });
             });
+        });
+
+        Route::group(['prefix' => 'register', 'as' => 'register.'], function () {
+            Route::get('/', [RegisterController::class, 'index'])->name('index');
+            Route::get('/tambah', [RegisterController::class, 'tambah'])->name('tambah');
+            Route::get('/ubah/{id?}', [RegisterController::class, 'edit'])->name('ubah');
+            Route::get('/detail/{id?}', [RegisterController::class, 'detailRegister'])->name('detail');
+            Route::get('/img/{id?}', [RegisterController::class, 'detailImg'])->name('detail_img');
+            Route::post('/getdata', [RegisterController::class, 'getData'])->name('getdata');
+            Route::post('/simpan', [RegisterController::class, 'simpan'])->name('simpan');
+            // Route::delete('/delete/{id?}', [DetailPaketController::class, 'delete'])->name('hapus');
         });
     });
 });

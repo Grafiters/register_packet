@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Str;
 
 use App\Models\Paket;
 
@@ -87,7 +86,6 @@ class PaketController extends Controller
 
         if(!$dec_id){
             $data   = new Paket;
-            $data->code         = strtoupper(Str::random(8));
             $data->name         = $request->name;
             $data->detail       = $request->detail;
             $data->save();

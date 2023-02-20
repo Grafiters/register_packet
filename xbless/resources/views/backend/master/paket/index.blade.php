@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title', 'Paket')
+@section('title', 'Jenis Paket')
 @section('content')
 
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -34,6 +34,7 @@
                                     <th>No</th>
                                     <th>Name</th>
                                     <th>Detail</th>
+                                    {{-- <th>Status</th> --}}
                                     <th>Action</th>
                                 </tr>
                             </thead>

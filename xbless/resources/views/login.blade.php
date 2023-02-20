@@ -46,7 +46,7 @@
         <div class="row content-log justify-content-between">
             <div class="col-md-6 text-center">
                 <h2 class="welcome">{{__('menu_wording.title')}}</h2>
-                <img src="{{ asset('assets/background/esertif_v2.png') }}" class="img-fluid" alt="cover">
+                <img src="{{ asset('assets/img/login_img.png') }}" class="img-fluid" alt="cover">
             </div>
             <div class="col-md-5 m-auto" style="padding:0px 5%; ">
                 <form action="{{route('manage.checklogin')}}"

@@ -44,6 +44,20 @@ class Controller extends BaseController
         ]);
     }
 
+    function dataExists($data){
+        return response()->json([
+            'code'      => 200,
+            'data'      => $data
+        ]);
+    }
+
+    function submit_regis($message){
+        return response()->json([
+            'code'      => 201,
+            'message'   => $action,
+        ]);
+    }
+
     function failSubmit($message){
         return response()->json([
             'code'      => 400,

@@ -34,7 +34,7 @@ class LoginController extends Controller
                   session(['profile'   => url('assets/logo/fav.png')]);
                   session(['namaakses' => $akun->namaAkses?$akun->namaAkses->name:'']);
                   Auth::login($akun);
-                  return redirect()->route('manage.beranda');
+                  return redirect()->route('admin.register.index');
               } else {
                   $desc = 'Login gagal. Cek kembali email dan password Anda.';
                   return redirect()->route('manage.login')->with('message', ['status'=>'danger','desc'=>$desc]);
